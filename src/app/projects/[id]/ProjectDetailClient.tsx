@@ -162,10 +162,8 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
                     <div className="text-center p-8">
                       <div className="text-6xl mb-4 opacity-50">
-                        {project.category === "webapp" && "🖥️"}
                         {project.category === "lp" && "📄"}
                         {project.category === "website" && "🌐"}
-                        {project.category === "other" && "📦"}
                       </div>
                       <p className="text-gray-600">Preview not available</p>
                       <p className="text-gray-500 text-sm mt-2">This project doesn&apos;t have a live URL</p>

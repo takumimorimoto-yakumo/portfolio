@@ -118,10 +118,8 @@ export default function PreviewModal({ project, onClose }: PreviewModalProps) {
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
                     <div className="text-center p-8">
                       <div className="text-6xl mb-4 opacity-50">
-                        {project.category === "webapp" && "🖥️"}
                         {project.category === "lp" && "📄"}
                         {project.category === "website" && "🌐"}
-                        {project.category === "other" && "📦"}
                       </div>
                       <p className="text-foreground-muted">Preview not available</p>
                       <p className="text-foreground-muted text-sm mt-2">This project doesn't have a live URL</p>

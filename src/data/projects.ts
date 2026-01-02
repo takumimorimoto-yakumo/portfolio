@@ -1,4 +1,4 @@
-export type ProjectCategory = "lp" | "website" | "webapp" | "other";
+export type ProjectCategory = "lp" | "website";
 
 export interface Project {
   id: string;
@@ -15,8 +15,6 @@ export interface Project {
 export const categoryLabels: Record<ProjectCategory, string> = {
   lp: "LP",
   website: "ウェブサイト",
-  webapp: "ウェブアプリ",
-  other: "その他",
 };
 
 export const projects: Project[] = [
@@ -33,70 +31,34 @@ export const projects: Project[] = [
   },
   {
     id: "techlab-lp",
-    title: "TechLab LP",
-    description: "テック企業向けのモダンなランディングページ。",
+    title: "TechLab",
+    description: "AI・機械学習のR&D企業向けモダンLP。先進的なデザインと技術力を訴求。",
     category: "lp",
     thumbnail: "/projects/techlab.png",
-    url: "https://techlab.example.com",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    url: "/works/techlab",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     year: 2024,
     featured: true,
   },
   {
-    id: "portfolio-dashboard",
-    title: "Portfolio Dashboard",
-    description: "投資ポートフォリオを管理・可視化するダッシュボード。",
-    category: "webapp",
-    thumbnail: "/projects/dashboard.png",
-    technologies: ["React", "TypeScript", "Chart.js", "Node.js"],
-    year: 2024,
-  },
-  {
-    id: "cafe-website",
+    id: "cafe-minimal",
     title: "Cafe Minimal",
-    description: "ミニマルデザインのカフェ公式サイト。",
+    description: "ミニマルデザインのカフェ公式サイト。洗練された世界観を表現。",
     category: "website",
     thumbnail: "/projects/cafe.png",
-    url: "https://cafe.example.com",
+    url: "/works/cafe",
     technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
-    year: 2023,
-  },
-  {
-    id: "fitness-app",
-    title: "FitTrack",
-    description: "ワークアウト記録・進捗管理アプリ。",
-    category: "webapp",
-    thumbnail: "/projects/fitness.png",
-    technologies: ["React Native", "TypeScript", "Firebase"],
-    year: 2023,
+    year: 2024,
   },
   {
     id: "agency-lp",
     title: "Creative Agency",
-    description: "クリエイティブエージェンシーのLP。動的アニメーション。",
+    description: "クリエイティブエージェンシーのLP。ダイナミックなアニメーションで魅力を伝える。",
     category: "lp",
     thumbnail: "/projects/agency.png",
-    url: "https://agency.example.com",
-    technologies: ["Next.js", "GSAP", "Three.js"],
-    year: 2023,
-  },
-  {
-    id: "ecommerce",
-    title: "ShopModern",
-    description: "モダンなECサイト。Stripe決済対応。",
-    category: "webapp",
-    thumbnail: "/projects/ecommerce.png",
-    technologies: ["Next.js", "Prisma", "Stripe", "PostgreSQL"],
-    year: 2023,
+    url: "/works/agency",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    year: 2024,
     featured: true,
-  },
-  {
-    id: "blog-platform",
-    title: "DevBlog",
-    description: "開発者向けブログプラットフォーム。Markdown対応。",
-    category: "webapp",
-    thumbnail: "/projects/blog.png",
-    technologies: ["Next.js", "MDX", "Tailwind CSS"],
-    year: 2022,
   },
 ];

@@ -15,7 +15,7 @@ export default function ProjectFilter({
   searchQuery,
   onSearchChange,
 }: ProjectFilterProps) {
-  const categories: (ProjectCategory | "all")[] = ["all", "lp", "website", "webapp", "other"];
+  const categories: (ProjectCategory | "all")[] = ["all", "lp", "website"];
 
   return (
     <div className="flex flex-col md:flex-row gap-4 mb-8">
