@@ -46,11 +46,7 @@ export default function Home() {
             height: isScrolled ? 48 : 72,
           }}
           transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-          className={`fixed top-0 left-0 right-0 z-40 backdrop-blur-lg border-b transition-colors duration-300 ${
-            isScrolled
-              ? "bg-[var(--bg-surface)] border-transparent shadow-sm"
-              : "bg-[var(--bg-surface)]/80 border-[var(--border-subtle)]"
-          }`}
+          className="fixed top-0 left-0 right-0 z-40"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
             <div className="flex items-center justify-between h-full overflow-hidden">
