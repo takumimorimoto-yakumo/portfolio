@@ -18,6 +18,7 @@ export const categoryLabels: Record<ProjectCategory, string> = {
 };
 
 export const projects: Project[] = [
+  // LP
   {
     id: "salesflow",
     title: "SalesFlow",
@@ -32,7 +33,7 @@ export const projects: Project[] = [
   {
     id: "techlab-lp",
     title: "TechLab",
-    description: "AI・機械学習のR&D企業向けモダンLP。先進的なデザインと技術力を訴求。",
+    description: "AI・機械学習のR&D企業向けモダンLP。サイバーパンク風デザイン。",
     category: "lp",
     thumbnail: "/projects/techlab.png",
     url: "/works/techlab",
@@ -40,6 +41,18 @@ export const projects: Project[] = [
     year: 2024,
     featured: true,
   },
+  {
+    id: "agency-lp",
+    title: "Creative Agency",
+    description: "クリエイティブエージェンシーのLP。大胆なタイポグラフィとアニメーション。",
+    category: "lp",
+    thumbnail: "/projects/agency.png",
+    url: "/works/agency",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    year: 2024,
+    featured: true,
+  },
+  // Website
   {
     id: "cafe-minimal",
     title: "Cafe Minimal",
@@ -51,14 +64,24 @@ export const projects: Project[] = [
     year: 2024,
   },
   {
-    id: "agency-lp",
-    title: "Creative Agency",
-    description: "クリエイティブエージェンシーのLP。ダイナミックなアニメーションで魅力を伝える。",
-    category: "lp",
-    thumbnail: "/projects/agency.png",
-    url: "/works/agency",
+    id: "architect",
+    title: "NOIR Architecture",
+    description: "建築設計事務所のコーポレートサイト。モノクロ基調のエレガントなデザイン。",
+    category: "website",
+    thumbnail: "/projects/architect.png",
+    url: "/works/architect",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     year: 2024,
     featured: true,
+  },
+  {
+    id: "photographer",
+    title: "Yuki Tanaka Photography",
+    description: "フォトグラファーのポートフォリオサイト。写真を際立たせるミニマルUI。",
+    category: "website",
+    thumbnail: "/projects/photographer.png",
+    url: "/works/photographer",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    year: 2024,
   },
 ];
