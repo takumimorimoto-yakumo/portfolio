@@ -22,12 +22,12 @@ export default function ProjectCard({ project, onPreview }: ProjectCardProps) {
       {/* Thumbnail */}
       <div className="relative aspect-[16/10] bg-[var(--bg-app)] overflow-hidden">
         <div className="absolute inset-0 bg-[var(--brand-primary)]/10" />
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
           <span className="text-[var(--text-secondary)] text-sm">{project.title}</span>
         </div>
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-[var(--bg-surface)]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+        <div className="absolute inset-0 bg-[var(--bg-surface)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
           <button
             onClick={() => onPreview(project)}
             className="px-4 py-2 bg-[var(--brand-primary)] text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity cursor-pointer"
