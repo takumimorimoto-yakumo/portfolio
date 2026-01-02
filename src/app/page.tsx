@@ -43,66 +43,57 @@ export default function Home() {
         <motion.header
           initial={false}
           animate={{
-            height: isScrolled ? 56 : 72,
+            height: isScrolled ? 48 : 72,
           }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`fixed top-0 left-0 right-0 z-40 backdrop-blur-lg border-b border-[var(--border-subtle)] transition-colors duration-300 ${
-            isScrolled ? "bg-[var(--bg-surface)]/95" : "bg-[var(--bg-surface)]/80"
+          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+          className={`fixed top-0 left-0 right-0 z-40 backdrop-blur-lg border-b transition-colors duration-300 ${
+            isScrolled
+              ? "bg-[var(--bg-surface)] border-transparent shadow-sm"
+              : "bg-[var(--bg-surface)]/80 border-[var(--border-subtle)]"
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-            <div className="flex items-center justify-between h-full">
+            <div className="flex items-center justify-between h-full overflow-hidden">
               {/* Logo - 左固定 */}
               <motion.div
                 className="flex items-center gap-2"
-                animate={{ scale: isScrolled ? 0.9 : 1 }}
-                transition={{ duration: 0.3 }}
+                layout
               >
                 <motion.div
                   className="rounded-lg bg-[var(--brand-primary)]"
                   animate={{
-                    width: isScrolled ? 28 : 32,
-                    height: isScrolled ? 28 : 32,
+                    width: isScrolled ? 24 : 32,
+                    height: isScrolled ? 24 : 32,
                   }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                 />
                 <span className="text-lg font-semibold text-[var(--text-primary)] font-[family-name:var(--font-space-grotesk)]">
                   Yakumo
                 </span>
               </motion.div>
 
-              {/* Navigation - 右側に縮小 */}
+              {/* Navigation - 右にスライドして消える */}
               <motion.nav
-                className="flex items-center"
+                className="flex items-center gap-6"
                 animate={{
-                  gap: isScrolled ? 16 : 24,
+                  x: isScrolled ? 100 : 0,
+                  opacity: isScrolled ? 0 : 1,
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                style={{ pointerEvents: isScrolled ? "none" : "auto" }}
               >
-                <motion.a
+                <a
                   href="#projects"
-                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                  animate={{
-                    fontSize: isScrolled ? "0.75rem" : "0.875rem",
-                  }}
-                  transition={{ duration: 0.3 }}
+                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-sm"
                 >
                   Projects
-                </motion.a>
-                <motion.a
+                </a>
+                <a
                   href="mailto:contact@yakumo.dev"
-                  className="bg-[var(--color-action)] text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
-                  animate={{
-                    paddingLeft: isScrolled ? 12 : 16,
-                    paddingRight: isScrolled ? 12 : 16,
-                    paddingTop: isScrolled ? 6 : 8,
-                    paddingBottom: isScrolled ? 6 : 8,
-                    fontSize: isScrolled ? "0.75rem" : "0.875rem",
-                  }}
-                  transition={{ duration: 0.3 }}
+                  className="px-4 py-2 bg-[var(--color-action)] text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
                   Contact
-                </motion.a>
+                </a>
               </motion.nav>
             </div>
           </div>
