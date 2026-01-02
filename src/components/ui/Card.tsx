@@ -1,44 +1,109 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { ReactNode } from "react";
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { motion, Variants, HTMLMotionProps } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-type CardVariant = "default" | "elevated" | "bordered" | "highlighted";
+const cardVariants = cva(
+  "rounded-xl border shadow-sm transition-colors",
+  {
+    variants: {
+      variant: {
+        default: "border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-primary)]",
+        elevated: "border-transparent bg-[var(--bg-surface)] shadow-lg",
+        bordered: "border-2 border-[var(--border-subtle)] bg-[var(--bg-surface)]",
+        highlighted: "border-[var(--brand-primary)] ring-2 ring-[var(--brand-primary)] bg-[var(--bg-surface)] shadow-xl",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
 
-interface CardProps {
-  children: ReactNode;
-  variant?: CardVariant;
-  className?: string;
+export interface CardProps
+  extends Omit<HTMLMotionProps<"div">, "ref">,
+    VariantProps<typeof cardVariants> {
   hoverEffect?: boolean;
   animationVariants?: Variants;
 }
 
-const variantStyles: Record<CardVariant, string> = {
-  default: "bg-white border border-gray-100",
-  elevated: "bg-white shadow-lg",
-  bordered: "bg-white border-2 border-gray-200",
-  highlighted: "bg-white ring-2 ring-blue-600 shadow-xl",
-};
-
-export default function Card({
-  children,
-  variant = "default",
-  className = "",
-  hoverEffect = true,
-  animationVariants,
-}: CardProps) {
-  const baseStyles = "rounded-xl p-8";
-  const hoverStyles = hoverEffect
-    ? "hover:shadow-md transition-shadow"
-    : "";
-
-  return (
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, variant, hoverEffect = false, animationVariants, ...props }, ref) => (
     <motion.div
+      ref={ref}
       variants={animationVariants}
-      whileHover={hoverEffect ? { y: -5, transition: { duration: 0.2 } } : undefined}
-      className={`${baseStyles} ${variantStyles[variant]} ${hoverStyles} ${className}`}
-    >
-      {children}
-    </motion.div>
-  );
-}
+      whileHover={hoverEffect ? { y: -4, transition: { duration: 0.2 } } : undefined}
+      className={cn(
+        cardVariants({ variant }),
+        hoverEffect && "hover:border-[var(--text-secondary)] cursor-pointer",
+        className
+      )}
+      {...props}
+    />
+  )
+);
+Card.displayName = "Card";
+
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    {...props}
+  />
+));
+CardHeader.displayName = "CardHeader";
+
+const CardTitle = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "text-lg font-semibold leading-none tracking-tight text-[var(--text-primary)] font-[family-name:var(--font-space-grotesk)]",
+      className
+    )}
+    {...props}
+  />
+));
+CardTitle.displayName = "CardTitle";
+
+const CardDescription = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm text-[var(--text-secondary)]", className)}
+    {...props}
+  />
+));
+CardDescription.displayName = "CardDescription";
+
+const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+));
+CardContent.displayName = "CardContent";
+
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex items-center p-6 pt-0", className)}
+    {...props}
+  />
+));
+CardFooter.displayName = "CardFooter";
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, cardVariants };
+export default Card;

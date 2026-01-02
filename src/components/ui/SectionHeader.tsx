@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
   title: ReactNode;
@@ -22,12 +23,14 @@ export default function SectionHeader({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className={`mb-12 ${centered ? "text-center" : ""} ${className}`}
+      className={cn("mb-12", centered && "text-center", className)}
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 font-[family-name:var(--font-space-grotesk)]">
         {title}
       </h2>
-      {subtitle && <p className="text-gray-600 text-lg">{subtitle}</p>}
+      {subtitle && (
+        <p className="text-[var(--text-secondary)] text-lg">{subtitle}</p>
+      )}
     </motion.div>
   );
 }

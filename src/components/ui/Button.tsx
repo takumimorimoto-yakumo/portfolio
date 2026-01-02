@@ -1,67 +1,85 @@
 "use client";
 
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { motion, HTMLMotionProps } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "accent";
-type ButtonSize = "sm" | "md" | "lg";
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+  {
+    variants: {
+      variant: {
+        default: "bg-[var(--brand-primary)] text-white hover:opacity-90",
+        primary: "bg-[var(--brand-primary)] text-white hover:opacity-90",
+        destructive: "bg-[var(--color-action)] text-white hover:opacity-90",
+        outline:
+          "border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-primary)] hover:bg-[var(--bg-app)] hover:border-[var(--text-secondary)]",
+        secondary: "bg-[var(--bg-app)] text-[var(--text-primary)] hover:opacity-80",
+        ghost: "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-app)]",
+        link: "text-[var(--brand-primary)] underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        md: "h-10 px-6 py-3",
+        lg: "h-11 rounded-lg px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
 
-interface ButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
+export interface ButtonProps
+  extends Omit<HTMLMotionProps<"button">, "ref">,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
   href?: string;
   fullWidth?: boolean;
 }
 
-// ui-ux-pro-max: CTA buttons use accent color (orange) for contrast
-const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/25",
-  secondary: "bg-gray-900 text-white hover:bg-gray-800",
-  outline:
-    "border border-gray-300 text-gray-700 hover:bg-gray-50 bg-transparent",
-  ghost: "text-gray-600 hover:text-gray-900 hover:bg-gray-100 bg-transparent",
-  accent:
-    "bg-orange-500 text-white hover:bg-orange-600 shadow-lg shadow-orange-500/25",
-};
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, href, fullWidth, children, ...props }, ref) => {
+    const classes = cn(
+      buttonVariants({ variant, size }),
+      fullWidth && "w-full",
+      className
+    );
 
-const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-base",
-  lg: "px-8 py-4 text-lg",
-};
+    const motionProps = {
+      whileHover: { scale: 1.02 },
+      whileTap: { scale: 0.98 },
+    };
 
-export default function Button({
-  variant = "primary",
-  size = "md",
-  href,
-  fullWidth = false,
-  className = "",
-  children,
-  ...props
-}: ButtonProps) {
-  // ui-ux-pro-max: All interactive elements must have cursor-pointer
-  const baseStyles =
-    "rounded-lg font-semibold transition-colors inline-flex items-center justify-center cursor-pointer";
-  const styles = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${
-    fullWidth ? "w-full" : ""
-  } ${className}`;
+    if (href) {
+      return (
+        <motion.a
+          href={href}
+          className={classes}
+          {...motionProps}
+        >
+          {children}
+        </motion.a>
+      );
+    }
 
-  const motionProps = {
-    whileHover: { scale: 1.02 },
-    whileTap: { scale: 0.98 },
-  };
-
-  if (href) {
     return (
-      <motion.a href={href} className={styles} {...motionProps}>
+      <motion.button
+        className={classes}
+        ref={ref}
+        {...motionProps}
+        {...props}
+      >
         {children}
-      </motion.a>
+      </motion.button>
     );
   }
+);
+Button.displayName = "Button";
 
-  return (
-    <motion.button className={styles} {...motionProps} {...props}>
-      {children}
-    </motion.button>
-  );
-}
+export { Button, buttonVariants };
+export default Button;
