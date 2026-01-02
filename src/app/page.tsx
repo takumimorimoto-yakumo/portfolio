@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <div className="min-h-screen overflow-y-auto">
         {/* Header */}
-        <header className="sticky top-0 z-40 bg-[var(--bg-surface)]/90 backdrop-blur-lg border-b border-[var(--border-subtle)]">
+        <header className="fixed top-0 left-0 right-0 z-40 bg-[var(--bg-surface)]/90 backdrop-blur-lg border-b border-[var(--border-subtle)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center gap-2">
@@ -55,7 +55,7 @@ export default function Home() {
         </header>
 
         {/* Hero */}
-        <section className="relative">
+        <section className="relative pt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
