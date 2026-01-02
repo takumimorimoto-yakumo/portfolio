@@ -24,18 +24,18 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b border-border">
+      <header className="sticky top-0 z-40 bg-[var(--bg-surface)]/90 backdrop-blur-lg border-b border-[var(--border-subtle)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent" />
-              <span className="text-lg font-semibold text-foreground font-[family-name:var(--font-space-grotesk)]">
+              <div className="w-8 h-8 rounded-lg bg-[var(--brand-primary)]" />
+              <span className="text-lg font-semibold text-[var(--text-primary)] font-[family-name:var(--font-space-grotesk)]">
                 Yakumo
               </span>
             </Link>
             <Link
               href="/"
-              className="flex items-center gap-2 text-foreground-muted hover:text-foreground transition-colors text-sm"
+              className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-sm"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -54,22 +54,22 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
           transition={{ duration: 0.6 }}
         >
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-lg">
+            <span className="px-3 py-1 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-sm font-medium rounded-lg">
               {categoryLabels[project.category]}
             </span>
-            <span className="text-foreground-muted text-sm">{project.year}</span>
+            <span className="text-[var(--text-secondary)] text-sm">{project.year}</span>
             {project.featured && (
-              <span className="px-3 py-1 bg-accent/10 text-accent text-sm font-medium rounded-lg">
+              <span className="px-3 py-1 bg-[var(--color-action)]/10 text-[var(--color-action)] text-sm font-medium rounded-lg">
                 Featured
               </span>
             )}
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 font-[family-name:var(--font-space-grotesk)]">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4 font-[family-name:var(--font-space-grotesk)]">
             {project.title}
           </h1>
 
-          <p className="text-lg text-foreground-muted mb-6 max-w-3xl">
+          <p className="text-lg text-[var(--text-secondary)] mb-6 max-w-3xl">
             {project.description}
           </p>
 
@@ -78,7 +78,7 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1.5 bg-card border border-border text-foreground-muted text-sm rounded-lg"
+                className="px-3 py-1.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] text-sm rounded-lg"
               >
                 {tech}
               </span>
@@ -91,7 +91,7 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
               project.url.startsWith("/") ? (
                 <Link
                   href={project.url}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-primary-hover transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--brand-primary)] text-white font-medium rounded-xl hover:opacity-90 transition-opacity"
                 >
                   Visit Site
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-primary-hover transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--brand-primary)] text-white font-medium rounded-xl hover:opacity-90 transition-opacity"
                 >
                   Visit Site
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -125,7 +125,7 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
         >
           {/* Device Selector */}
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-foreground font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] font-[family-name:var(--font-space-grotesk)]">
               Preview
             </h2>
             <div className="flex items-center gap-2">
@@ -133,10 +133,10 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
                 <button
                   key={d}
                   onClick={() => setDevice(d)}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors cursor-pointer ${
                     device === d
-                      ? "bg-primary text-white"
-                      : "bg-card border border-border text-foreground-muted hover:text-foreground hover:border-border-hover"
+                      ? "bg-[var(--brand-primary)] text-white"
+                      : "bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-secondary)]"
                   }`}
                 >
                   {deviceSizes[d].label}
@@ -146,8 +146,8 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
           </div>
 
           {/* Preview Frame */}
-          <div className="bg-card border border-border rounded-2xl overflow-hidden">
-            <div className="bg-background-secondary p-4 flex justify-center min-h-[600px]">
+          <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl overflow-hidden">
+            <div className="bg-[var(--bg-app)] p-4 flex justify-center min-h-[600px]">
               <div
                 className="bg-white rounded-lg overflow-hidden transition-all duration-300 h-[600px]"
                 style={{ width: deviceSizes[device].width, maxWidth: "100%" }}
@@ -159,14 +159,15 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
                     title={`Preview of ${project.title}`}
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
+                  <div className="w-full h-full flex items-center justify-center bg-[var(--bg-app)]">
                     <div className="text-center p-8">
-                      <div className="text-6xl mb-4 opacity-50">
-                        {project.category === "lp" && "📄"}
-                        {project.category === "website" && "🌐"}
+                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--brand-primary)]/10 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-[var(--brand-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
                       </div>
-                      <p className="text-gray-600">Preview not available</p>
-                      <p className="text-gray-500 text-sm mt-2">This project doesn&apos;t have a live URL</p>
+                      <p className="text-[var(--text-secondary)]">Preview not available</p>
+                      <p className="text-[var(--text-secondary)] text-sm mt-2">This project doesn&apos;t have a live URL</p>
                     </div>
                   </div>
                 )}
@@ -177,18 +178,18 @@ export default function ProjectDetailClient({ project, categoryLabels }: Project
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border">
+      <footer className="border-t border-[var(--border-subtle)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-md bg-gradient-to-br from-primary to-accent" />
-              <span className="text-sm text-foreground-muted">
+              <div className="w-6 h-6 rounded-md bg-[var(--brand-primary)]" />
+              <span className="text-sm text-[var(--text-secondary)]">
                 &copy; {new Date().getFullYear()} Yakumo. All rights reserved.
               </span>
             </div>
             <Link
               href="/"
-              className="text-foreground-muted hover:text-foreground transition-colors text-sm"
+              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-sm"
             >
               View All Projects
             </Link>

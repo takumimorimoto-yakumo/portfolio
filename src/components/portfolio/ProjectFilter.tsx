@@ -22,7 +22,7 @@ export default function ProjectFilter({
       {/* Search */}
       <div className="relative flex-1 max-w-md">
         <svg
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-muted"
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--text-secondary)]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -39,7 +39,7 @@ export default function ProjectFilter({
           placeholder="Search projects..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 bg-card border border-border rounded-xl text-foreground placeholder:text-foreground-muted focus:border-primary focus:ring-0 transition-colors"
+          className="w-full pl-10 pr-4 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:border-[var(--brand-primary)] focus:ring-0 transition-colors"
         />
       </div>
 
@@ -49,10 +49,10 @@ export default function ProjectFilter({
           <button
             key={category}
             onClick={() => onCategoryChange(category)}
-            className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors ${
+            className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors cursor-pointer ${
               selectedCategory === category
-                ? "bg-primary text-white"
-                : "bg-card border border-border text-foreground-muted hover:text-foreground hover:border-border-hover"
+                ? "bg-[var(--brand-primary)] text-white"
+                : "bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-secondary)]"
             }`}
           >
             {category === "all" ? "All" : categoryLabels[category]}

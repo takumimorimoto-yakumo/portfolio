@@ -30,22 +30,22 @@ export default function Home() {
     <>
       <div className="min-h-screen overflow-y-auto">
         {/* Header */}
-        <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-lg border-b border-border">
+        <header className="sticky top-0 z-40 bg-[var(--bg-surface)]/90 backdrop-blur-lg border-b border-[var(--border-subtle)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent" />
-                <span className="text-lg font-semibold text-foreground font-[family-name:var(--font-space-grotesk)]">
+                <div className="w-8 h-8 rounded-lg bg-[var(--brand-primary)]" />
+                <span className="text-lg font-semibold text-[var(--text-primary)] font-[family-name:var(--font-space-grotesk)]">
                   Yakumo
                 </span>
               </div>
               <nav className="flex items-center gap-6">
-                <a href="#projects" className="text-foreground-muted hover:text-foreground transition-colors text-sm">
+                <a href="#projects" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-sm">
                   Projects
                 </a>
                 <a
                   href="mailto:contact@yakumo.dev"
-                  className="px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-hover transition-colors"
+                  className="px-4 py-2 bg-[var(--color-action)] text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
                   Contact
                 </a>
@@ -55,32 +55,28 @@ export default function Home() {
         </header>
 
         {/* Hero */}
-        <section className="relative overflow-hidden">
-          {/* Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl opacity-30 rounded-full" />
-
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+        <section className="relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-center max-w-3xl mx-auto"
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-[family-name:var(--font-space-grotesk)]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-6 font-[family-name:var(--font-space-grotesk)]">
                 Showcase
-                <span className="block mt-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <span className="block mt-2 text-[var(--brand-primary)]">
                   Portfolio
                 </span>
               </h1>
-              <p className="text-lg text-foreground-muted mb-8">
-                LP・ウェブサイト・ウェブアプリの制作実績を紹介します。
+              <p className="text-lg text-[var(--text-secondary)] mb-8">
+                LP・ウェブサイトの制作実績を紹介します。
                 <br className="hidden sm:block" />
                 モダンなデザインと高品質な開発をお届けします。
               </p>
-              <div className="flex items-center justify-center gap-4 text-sm text-foreground-muted">
+              <div className="flex items-center justify-center gap-4 text-sm text-[var(--text-secondary)]">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-success" />
+                  <span className="w-2 h-2 rounded-full bg-[var(--brand-primary)]" />
                   {projects.length} Projects
                 </span>
                 <span>|</span>
@@ -105,7 +101,7 @@ export default function Home() {
             />
 
             {/* Results Count */}
-            <div className="mb-6 text-sm text-foreground-muted">
+            <div className="mb-6 text-sm text-[var(--text-secondary)]">
               {filteredProjects.length} project{filteredProjects.length !== 1 ? "s" : ""} found
             </div>
 
@@ -129,9 +125,8 @@ export default function Home() {
                 animate={{ opacity: 1 }}
                 className="text-center py-16"
               >
-                <div className="text-6xl mb-4 opacity-50">🔍</div>
-                <p className="text-foreground-muted">No projects found</p>
-                <p className="text-foreground-muted text-sm mt-2">
+                <p className="text-[var(--text-secondary)]">No projects found</p>
+                <p className="text-[var(--text-secondary)] text-sm mt-2">
                   Try adjusting your search or filter
                 </p>
               </motion.div>
@@ -140,23 +135,23 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-border">
+        <footer className="border-t border-[var(--border-subtle)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-gradient-to-br from-primary to-accent" />
-                <span className="text-sm text-foreground-muted">
+                <div className="w-6 h-6 rounded-md bg-[var(--brand-primary)]" />
+                <span className="text-sm text-[var(--text-secondary)]">
                   &copy; {new Date().getFullYear()} Yakumo. All rights reserved.
                 </span>
               </div>
               <div className="flex items-center gap-4">
-                <a href="#" className="text-foreground-muted hover:text-foreground transition-colors text-sm">
+                <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-sm">
                   GitHub
                 </a>
-                <a href="#" className="text-foreground-muted hover:text-foreground transition-colors text-sm">
+                <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-sm">
                   Twitter
                 </a>
-                <a href="mailto:contact@yakumo.dev" className="text-foreground-muted hover:text-foreground transition-colors text-sm">
+                <a href="mailto:contact@yakumo.dev" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-sm">
                   Email
                 </a>
               </div>

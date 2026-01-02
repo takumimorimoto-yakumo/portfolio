@@ -1,42 +1,90 @@
 @import "tailwindcss";
 
-/* Portfolio - Modern Minimal Dark Theme */
+/* Portfolio - Tokiwa Green & Miyabi Colors */
 :root {
-  --background: #0A0A0B;
-  --background-secondary: #111113;
-  --foreground: #FAFAFA;
-  --foreground-muted: #A1A1AA;
-  --primary: #3B82F6;
-  --primary-hover: #60A5FA;
-  --accent: #8B5CF6;
-  --border: #27272A;
-  --border-hover: #3F3F46;
-  --card: #18181B;
-  --card-hover: #1F1F23;
-  --success: #22C55E;
-  --gradient-1: #3B82F6;
-  --gradient-2: #8B5CF6;
+  /* --- Base: Tokiwa Green (常盤色) --- */
+  --green-25:  #F5FBF7;
+  --green-50:  #F0FDF4;
+  --green-100: #DCFCE7;
+  --green-200: #BBF7D0;
+  --green-300: #86EFAC;
+  --green-400: #4ADE80;
+  --green-500: #22C55E;
+  --green-600: #16A34A;
+  --green-700: #15803D;
+  --green-800: #166534;
+  --green-900: #0A2214;
+  --green-950: #020804;
+
+  /* --- Accents: Miyabi Colors (雅) --- */
+  --shinku: #9F1239;
+  --shinku-light: #BE123C;
+  --kogane: #B45309;
+  --kogane-glow: #F59E0B;
+
+  /* --- Neutral: Nibi-iro (鈍色) --- */
+  --nibi-500: #71717A;
+  --nibi-700: #3F3F46;
+  --nibi-900: #18181B;
+
+  /* --- Gray Palette (Stone系) --- */
+  --gray-25:  #FAFAF9;
+  --gray-50:  #F5F5F4;
+  --gray-100: #E7E5E4;
+  --gray-200: #D6D3D1;
+  --gray-300: #A8A29E;
+  --gray-400: #78716C;
+  --gray-500: #57534E;
+  --gray-600: #44403C;
+  --gray-700: #292524;
+  --gray-800: #1C1917;
+  --gray-900: #09090B;
+
+  /* --- Semantic Colors (Light Mode) --- */
+  --bg-app: var(--green-25);
+  --bg-surface: #FFFFFF;
+  --text-primary: var(--nibi-900);
+  --text-secondary: var(--nibi-500);
+  --border-subtle: var(--gray-200);
+  --brand-primary: var(--green-700);
+  --color-action: var(--shinku);
+  --color-highlight: var(--kogane);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-app: var(--green-950);
+    --bg-surface: var(--green-900);
+    --text-primary: #E4E4E7;
+    --text-secondary: #A1A1AA;
+    --border-subtle: var(--green-800);
+    --brand-primary: var(--green-500);
+    --color-action: var(--shinku-light);
+    --color-highlight: var(--kogane-glow);
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-background-secondary: var(--background-secondary);
-  --color-foreground: var(--foreground);
-  --color-foreground-muted: var(--foreground-muted);
-  --color-primary: var(--primary);
-  --color-primary-hover: var(--primary-hover);
-  --color-accent: var(--accent);
-  --color-border: var(--border);
-  --color-border-hover: var(--border-hover);
-  --color-card: var(--card);
-  --color-card-hover: var(--card-hover);
-  --color-success: var(--success);
+  --color-bg-app: var(--bg-app);
+  --color-bg-surface: var(--bg-surface);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-subtle: var(--border-subtle);
+  --color-brand-primary: var(--brand-primary);
+  --color-action: var(--color-action);
+  --color-highlight: var(--color-highlight);
+  --color-green-700: var(--green-700);
+  --color-green-900: var(--green-900);
+  --color-green-950: var(--green-950);
+  --color-shinku: var(--shinku);
+  --color-kogane: var(--kogane);
   --font-sans: var(--font-space-grotesk), var(--font-dm-sans), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-app);
+  color: var(--text-primary);
   font-family: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
 }
 
@@ -58,27 +106,27 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--bg-app);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: var(--border-subtle);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-hover);
+  background: var(--text-secondary);
 }
 
 /* Selection */
 ::selection {
-  background: var(--primary);
+  background: var(--brand-primary);
   color: white;
 }
 
 /* Focus Ring */
 *:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--brand-primary);
   outline-offset: 2px;
 }
 
